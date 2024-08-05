@@ -13,7 +13,7 @@ The Eco Match App is a Flask-based web application designed to help users visual
     - **image_desc_list.json**: JSON file with descriptions of IKEA images.
     - **image_generator.py**: Script to generate images using the OpenAI API.
     - **image_processor.py**: Script for processing images.
-    - **test_text.txt**: Test text file.
+    - **test_text.txt**: Input text for testing
   - **static/**: Contains static assets like CSS and JavaScript files.
   - **templates/**: Contains HTML templates.
     - **index.html**: The main HTML template for the application.
