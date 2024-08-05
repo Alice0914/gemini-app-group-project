@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+</head>
+<body>
+    <textarea id="textToConvert"></textarea>
+    <button id="generateButton">Generate & Play</button>
+    <audio id="myAudio"></audio>
+  
+    <script>
+      const textArea = document.getElementById('textToConvert');
+      const generateButton = document.getElementById('generateButton');
+      const audioPlayer = document.getElementById('myAudio');
+  
+      generateButton.addEventListener('click', () => {
+        const text = textArea.value;
+  
+        fetch('/generate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ text: text }),
+        })
+        .then(response => response.json())
+        .then(data => {
+          audioPlayer.src = data.filePath;
+          audioPlayer.play();
+        })
+        .catch(error => console.error('Error:', error));
+      });
+    </script>
+    
+</body>
+</html>
