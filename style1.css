@@ -1490,4 +1490,28 @@ body {
   #suggestion {
 	padding-top: 1rem 0 0.5rem 0.5rem;
   }
+
+	/* Imange Generation Part */
+	#image_gen_part {
+		justify-content: center; /* Center horizontally */
+		background-color: rgb(251 248 239 / var(--tw-bg-opacity));
+		border-radius: 8px;
+		padding: 20px;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+		margin-top: 20px;
+		display: block;
+	}
+
+	.image-button-container {
+		display: flex;
+		justify-content: space-between; /* Adjusts the spacing between buttons */
+	}
+	.image-button-container button {
+	flex: 1; /* Adjusts the width of buttons equally */
+	margin: 0 5px; /* Adds some spacing between buttons */
+	}
+	/* /Imange Generation Part */
+
+
+
 }
