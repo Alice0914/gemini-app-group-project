@@ -32,3 +32,9 @@ The Eco Match App is a Flask-based web application designed to help users visual
 - scikit-learn
 - python-dotenv
 - OpenAI API key
+
+## Usage
+
+```
+flask --app app run --host=0.0.0.0 --port=5001 
+```
