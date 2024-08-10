@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interior Design Analyzer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/base64-js/1.5.1/base64.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js"></script>
+    <link rel="stylesheet" href="./style1.css">
+    <link rel="stylesheet" href="./style2.css">
+</head>
+<body>
+    <div class="relative flex size-full min-h-screen flex-col bg-[#FBF8EF] group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+        <div class="layout-container flex h-full grow flex-col">
+          <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#F5EFDB] px-10 py-3">
+            <div class="flex items-center gap-4 text-[#201A09]">
+              <div class="size-4">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </div>
+              <h2 class="text-[#201A09] text-lg font-bold leading-tight tracking-[-0.015em]">EcoMatch Interiors</h2>
+            </div>
+            <div class="flex flex-1 justify-end gap-8">
+              <div class="flex items-center gap-9">
+                <a class="text-[#201A09] text-sm font-medium leading-normal" href="#">About</a>
+                <a class="text-[#201A09] text-sm font-medium leading-normal" href="#">Explore</a>
+                <a class="text-[#201A09] text-sm font-medium leading-normal" href="#">Jobs</a>
+              </div>
+              <button id="signInButton" type="button" class="signin-button">
+                <span class="truncate">Sign in</span>
+              </button>
+              <div id="signInMessage">
+                <p><span id="userName"></span></p>
+              </div>
+              <button id="signOutButton" type="button" class="signout-button">
+                <span class="truncate">Sign Out</span>
+              </button>
+            </div>
+          </header>
+          <div id="main">
+            <div class="px-40 flex flex-1 justify-center py-5">
+              <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                <h3 class="text-[#201A09] tracking-light text-xl font-bold leading-tight px-4 text-center pb-2 pt-5">
+                  Hi, I'm EcoMatch. I can help you improve your living area. Choose from one of the options below or type your desired style.
+                </h3>
+                <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+                  <div class="flex flex-col gap-3 pb-3">
+                    <div
+                      class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                      style='background-image: url("https://cdn.usegalileo.ai/stability/eef4a3ba-38e6-44d5-977a-a6e4a228d2a2.png");'></div>
+                    <div>
+                      <p class="text-[#201A09] text-base font-medium leading-normal">Modern</p>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-3 pb-3">
+                    <div
+                      class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                      style='background-image: url("https://cdn.usegalileo.ai/sdxl10/7e387ced-e444-4d5d-846f-da1b1d3c1259.png");'></div>
+                    <div>
+                      <p class="text-[#201A09] text-base font-medium leading-normal">Coastal</p>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-3 pb-3">
+                    <div
+                      class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                      style='background-image: url("https://cdn.usegalileo.ai/sdxl10/cf18d164-2e20-45fc-9524-d9c2476256ab.png");'></div>
+                    <div>
+                      <p class="text-[#201A09] text-base font-medium leading-normal">Farmhouse</p>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-3 pb-3">
+                    <div
+                      class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                      style='background-image: url("https://cdn.usegalileo.ai/stability/0c7838fa-4458-480b-9df0-2e51fc53ab6b.png");'></div>
+                    <div>
+                      <p class="text-[#201A09] text-base font-medium leading-normal">Traditional</p>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-3 pb-3">
+                    <div
+                      class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                      style='background-image: url("https://cdn.usegalileo.ai/stability/4e72f98f-6519-4f57-9d33-1d07e778c759.png");'></div>
+                    <div>
+                      <p class="text-[#201A09] text-base font-medium leading-normal">Bohemian</p>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-3 pb-3">
+                    <div
+                      class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
+                      style='background-image: url("https://cdn.usegalileo.ai/sdxl10/5e98d570-e87c-400b-9ed3-541c6dd0247c.png");'></div>
+                    <div>
+                      <p class="text-[#201A09] text-base font-medium leading-normal">Rustic</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                  <form id="uploadForm">
+
+                    <!-- Image upload -->
+                    <div class="flex px-4 py-3 justify-start" id="dragDropArea">
+                      <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                      <button
+                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#F5EFDB] text-[#201A09] text-sm font-bold leading-normal tracking-[0.015em]">
+                        <span class="truncate">Upload a photo</span>
+                      </button>
+                    </div>
+
+                    <img id="imagePreview" alt="Image Preview" src="" style="display: none; max-width: 100%; margin-top: 20px;">
+                    <div class="flex px-4 py-3 justify-end">
+                      <button id="analyzeButton" type="button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#FAC638] text-[#AB2217] text-sm font-bold leading-normal tracking-[0.015em]">
+                        <span class="truncate">Submit</span>
+                      </button>
+                      <button id="uploadNewButton" type="button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#F5EFDB] text-[#201A09] text-sm font-bold leading-normal tracking-[0.015em]" style="display: none;">
+                        <span class="truncate">Reset</span>
+                      </button>
+                    </div>
+                  </form>
+                  <div id="loading">
+                    <div class="spinner-container">
+                        <div class="spinner"></div>
+                        <div>Analyzing...</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="result">
+            <div class="px-40 flex flex-1 justify-center py-5">
+              <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
+                <div class="flex flex-wrap justify-between gap-3 p-4">
+                  <div class="flex min-w-72 flex-col gap-3">
+                    <p class="text-[#201A09] tracking-light text-[32px] font-bold leading-tight">Your room score</p>
+                    <p class="score score-large">Calculating...</p>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3 p-4">
+                  <div class="flex gap-6 justify-between">
+                    <p class="text-[#201A09] text-base font-medium leading-normal">EcoMatch Interior Score</p>
+                    <p class="score text-[#201A09] text-sm font-normal leading-normal">Calculating...</p>
+                  </div>
+                  <div class="rounded bg-[#EFE3C3]"><div class="score-pct h-2 rounded bg-[#FAC638]"></div></div>
+                  <p class="text-[#A07D1C] text-sm font-normal leading-normal">This score is based on the environmental impact of your room's materials and layout</p>
+                </div>
+                <div id="result-suggestions"></div>
+                <div id="output"></div>
+                <!--<h3 class="text-[#201A09] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Upload another room</h3>
+                <div class="flex flex-col p-4">
+                  <div class="flex flex-col items-center gap-6 rounded-xl border-2 border-dashed border-[#EFE3C3] px-6 py-14">
+                    <div class="flex max-w-[480px] flex-col items-center gap-2">
+                      <p class="text-[#201A09] text-lg font-bold leading-tight tracking-[-0.015em] max-w-[480px] text-center">Upload a photo</p>
+                      <p class="text-[#201A09] text-sm font-normal leading-normal max-w-[480px] text-center">Take a picture of your room</p>
+                    </div>
+                    <button
+                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#F5EFDB] text-[#201A09] text-sm font-bold leading-normal tracking-[0.015em]"
+                    >
+                      <span class="truncate">Upload photo</span>
+                    </button>
+                  </div>
+                </div>-->
+              </div>
+            </div>
+
+            <div class="flex px-4 py-3 justify-end">
+              <button id="goBack" type="button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#F5EFDB] text-[#201A09] text-sm font-bold leading-normal tracking-[0.015em]">
+                <span class="truncate">Go Back</span>
+              </button>
+            </div>
+
+          </div>
+          
+          
+        </div>
+      </div>
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
