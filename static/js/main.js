@@ -1,6 +1,4 @@
 import { streamGemini } from './gemini-api.js';
-// import { streamVoiceAssistant } from './voice-assistant-api.js';
-// import { streamTextToSpeech } from './voice-assistant-api.js';
 
 const imageUpload = document.getElementById('imageUpload');
 const imagePreview = document.getElementById('imagePreview');
