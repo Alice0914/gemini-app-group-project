@@ -19,6 +19,8 @@ GEMINI-APP-PROJECT-FLASK
 │   └── index.html
 ├── main.py
 └── requirements.txt
+```
+
 ## Update the Default IDX Directory Structure
 
 Please update the default directory structure in IDX to match the structure provided above. This ensures that the application functions correctly and all files are correctly referenced within the project.
