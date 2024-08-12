@@ -68,3 +68,5 @@ Please update the default directory structure in IDX to match the structure prov
    - Replace `'Gemini-Api-Key'` in `main.py` with your actual Gemini API key.
 
 4. **Run the Application:**
+
+5. **Sign in through Google email to use all features on the application:**
