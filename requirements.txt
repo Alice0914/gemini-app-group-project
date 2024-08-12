@@ -1,8 +1,12 @@
 # Dev environment
 pip
 autopep8
+google-generativeai
 
 # App
 google-generativeai # Client library for the Gemini API
 Pillow # PIL image-loading library
 flask
+scikit-learn
+numpy
+sentence-transformers

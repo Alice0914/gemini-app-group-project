@@ -6,8 +6,8 @@
     <title>Interior Design Analyzer</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/base64-js/1.5.1/base64.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js"></script>
-    <link rel="stylesheet" href="./style1.css">
-    <link rel="stylesheet" href="./style2.css">
+    <link rel="stylesheet" href="../static/css/style1.css">
+    <link rel="stylesheet" href="../static/css/style2.css">
 </head>
 <body>
     <div class="relative flex size-full min-h-screen flex-col bg-[#FBF8EF] group/design-root overflow-x-hidden" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
@@ -26,30 +26,16 @@
               </div>
               <h2 class="text-[#201A09] text-lg font-bold leading-tight tracking-[-0.015em]">EcoMatch Interiors</h2>
             </div>
-            <div class="flex flex-1 justify-end gap-8">
-              <div class="flex items-center gap-9">
-                <a class="text-[#201A09] text-sm font-medium leading-normal" href="#">About</a>
-                <a class="text-[#201A09] text-sm font-medium leading-normal" href="#">Explore</a>
-                <a class="text-[#201A09] text-sm font-medium leading-normal" href="#">Jobs</a>
-              </div>
-              <button id="signInButton" type="button" class="signin-button">
-                <span class="truncate">Sign in</span>
-              </button>
-              <div id="signInMessage">
-                <p><span id="userName"></span></p>
-              </div>
-              <button id="signOutButton" type="button" class="signout-button">
-                <span class="truncate">Sign Out</span>
-              </button>
-            </div>
           </header>
           <div id="main">
             <div class="px-40 flex flex-1 justify-center py-5">
               <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-                <h3 class="text-[#201A09] tracking-light text-xl font-bold leading-tight px-4 text-center pb-2 pt-5">
-                  Hi, I'm EcoMatch. I can help you improve your living area. Choose from one of the options below or type your desired style.
-                </h3>
-                <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+                <div class="hero-content">
+                  <h2>Transform Your Space with AI-Driven Interior Design</h2>
+                  <p class="main-text">Welcome to the future of home décor, where technology meets creativity! Our cutting-edge AI takes 
+                  your vision and transforms it into stunning interior design ideas tailored just for you.</p>
+                </div>
+                <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-3 p-4">
                   <div class="flex flex-col gap-3 pb-3">
                     <div
                       class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
@@ -105,15 +91,14 @@
                     <!-- Image upload -->
                     <div class="flex px-4 py-3 justify-start" id="dragDropArea">
                       <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-                      <button
-                        class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#F5EFDB] text-[#201A09] text-sm font-bold leading-normal tracking-[0.015em]">
-                        <span class="truncate">Upload a photo</span>
+                      <button id="upload-button" class="primary">
+                        <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Upload a photo</span>
                       </button>
                     </div>
 
                     <img id="imagePreview" alt="Image Preview" src="" style="display: none; max-width: 100%; margin-top: 20px;">
                     <div class="flex px-4 py-3 justify-end">
-                      <button id="analyzeButton" type="button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#FAC638] text-[#AB2217] text-sm font-bold leading-normal tracking-[0.015em]">
+                      <button id="analyzeButton" type="button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#FAC638] text-[#AB2217] text-sm font-bold leading-normal tracking-[0.015em]" style="display: none;">
                         <span class="truncate">Submit</span>
                       </button>
                       <button id="uploadNewButton" type="button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#F5EFDB] text-[#201A09] text-sm font-bold leading-normal tracking-[0.015em]" style="display: none;">
@@ -149,7 +134,46 @@
                   <p class="text-[#A07D1C] text-sm font-normal leading-normal">This score is based on the environmental impact of your room's materials and layout</p>
                 </div>
                 <div id="result-suggestions"></div>
-                <div id="output"></div>
+                <div id="result-descriptions" class="flex flex-1">
+                  <div class="layout-content-container flex flex-col max-w-[960px] flex-1" id="image_gen_part">
+                    <h3 class="text-[#201A09] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">
+                      Image Description Similarity
+                    </h3>
+                    <textarea id="description" 
+                              class="form-input resize-none overflow-hidden rounded-xl text-[#201A09] focus:outline-0 focus:ring-0 border-none bg-[#F5EFDB] focus:border-none h-18 placeholder:text-[#A07D1C] p-4 text-base font-normal leading-normal w-full" 
+                              id="description" 
+                              rows="8" 
+                              cols="50" 
+                              placeholder="Enter generated description here..."></textarea>
+                    <br>
+                    <div class="button-container">
+                        <button id="btn-compare" class="primary flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#F5EFDB] text-[#201A09] text-sm font-bold leading-normal tracking-[0.015em]">
+                            <span class="truncate">Result</span>
+                        </button>
+                        <button id="btn-reset" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#F5EFDB] text-[#201A09] text-sm font-bold leading-normal tracking-[0.015em]">
+                            <span class="truncate">Reset</span>
+                        </button>
+                    </div>
+                    <div id="description-results">
+                      <div class="content"></div>
+                      <div class="button-container">
+                        <button id="btn-history-prev" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#F5EFDB] text-[#201A09] text-sm font-bold leading-normal tracking-[0.015em]">
+                            <span class="truncate">Previous</span>
+                        </button>
+                        <button id="btn-history-next" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#F5EFDB] text-[#201A09] text-sm font-bold leading-normal tracking-[0.015em]">
+                            <span class="truncate">Next</span>
+                        </button>
+                      </div>
+                    </div>
+                    <div id="myModal" class="modal">
+                      <div class="modal-content">
+                          <span class="close">&times;</span>
+                          <img src="" width="500"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
                 <!--<h3 class="text-[#201A09] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Upload another room</h3>
                 <div class="flex flex-col p-4">
                   <div class="flex flex-col items-center gap-6 rounded-xl border-2 border-dashed border-[#EFE3C3] px-6 py-14">
@@ -168,16 +192,13 @@
             </div>
 
             <div class="flex px-4 py-3 justify-end">
-              <button id="goBack" type="button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#F5EFDB] text-[#201A09] text-sm font-bold leading-normal tracking-[0.015em]">
+              <button id="goBack" type="button" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#F5EFDB] text-[#201A09] text-sm font-bold leading-normal tracking-[0.015em]" style="display: none;">
                 <span class="truncate">Go Back</span>
               </button>
             </div>
-
           </div>
-          
-          
         </div>
       </div>
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="../static/js/main.js"></script>
 </body>
 </html>
