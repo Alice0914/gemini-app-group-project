@@ -15,6 +15,7 @@ const domSuggestions = document.querySelector('#result-suggestions');
 const domDescriptions = document.querySelector('#result-descriptions');
 const textareaDescription = document.getElementById('description');
 const textareaResults = document.getElementById('description-results');
+const textareaContent = textareaResults.querySelector('.content');
 
 function handleFiles(files) {
     if (files.length > 0) {
@@ -271,8 +272,8 @@ btnHistoryNext.addEventListener('click', function () {
 const updateImageResults = data => {
     btnHistoryPrev.style.display = _history.hasPrev() ? 'block' : 'none';
     btnHistoryNext.style.display = _history.hasNext() ? 'block' : 'none';
-    const content = textareaResults.querySelector('.content');
-    content.innerHTML = '';
+    
+    if (textareaContent) textareaContent.innerHTML = '';
     data.forEach(item => {
         const div = document.createElement('div');
         div.className = 'result-item';
@@ -282,7 +283,7 @@ const updateImageResults = data => {
             </div>
         `;
         
-        content.appendChild(div);
+        textareaContent.appendChild(div);
     });
     textareaResults.style.display = 'block';
 };
@@ -305,7 +306,7 @@ function compareDescriptions(e) {
 
 document.getElementById('btn-reset').addEventListener('click', function (e) {
     textareaDescription.value = "";
-    textareaResults.innerHTML = "";
+    textareaContent.innerHTML = "";
     textareaResults.style.display = 'none';
 });
 
