@@ -44,16 +44,22 @@ def generate_api():
 @app.route('/compare', methods=['POST'])
 def compare():
     generated_description = request.json['description']
+    
     # Convert generated description to embedding
     gen_embedding = model.encode([generated_description])[0]
+
     # Calculate cosine similarities
     similarities = cosine_similarity([gen_embedding], image_embeddings)[0]
+
     # Combine URLs with their corresponding similarities
     similarity_scores = [(web_image_list[i]['image_url'], float(100 * similarities[i])) for i in range(len(similarities))]
+
     # Sort similarities in descending order
     similarity_scores.sort(key=lambda x: x[1], reverse=True)
+
     # Get only the top 3 similarities
     top_similarities = similarity_scores[:3]
+
     # Return the most similar info
     return jsonify(top_similarities)
     
