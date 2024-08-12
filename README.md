@@ -28,6 +28,27 @@ GEMINI-APP-PROJECT-FLASK
 ├── main.py
 └── requirements.txt
 ```
+## Technology Stack Used in This Application
+
+### Frontend
+
+- **JavaScript (JS):** Used for client-side scripting to create interactive and dynamic web pages.
+- **HTML & CSS:** Utilizes Tailwind CSS classes for styling and structuring the user interface.
+
+### Backend
+
+- **Python:** Employed as the primary language for server-side development, providing a robust and scalable environment.
+- **Flask:** A lightweight web framework for building the web server and API endpoints.
+
+### APIs and Models
+
+- **Gemini API:** Integrated to offer generative AI capabilities for content creation.
+- **Sentence Transformer:** A pre-trained model used to perform text similarity comparisons by converting text inputs into embedding vectors.
+
+### Authentication
+
+- **Firebase Authentication:** Provides secure user sign-in, specifically supporting Google accounts for easy authentication.
+
 
 ## Update the Default IDX Directory Structure
 
